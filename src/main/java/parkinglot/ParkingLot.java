@@ -12,12 +12,16 @@ public class ParkingLot {
     }
 
     public void park(Vehicle vehicle) throws ParkingFullException, VehicleAlreadyParkedException {
-        if (cars.contains(vehicle)) throw new VehicleAlreadyParkedException();
+        if (isParked(vehicle)) throw new VehicleAlreadyParkedException();
         if (cars.size() == capacity) throw new ParkingFullException();
         cars.add(vehicle);
     }
 
     public void unpark(Vehicle vehicle) {
         cars.remove(vehicle);
+    }
+
+    public boolean isParked(Vehicle vehicle) {
+        return cars.contains(vehicle);
     }
 }
