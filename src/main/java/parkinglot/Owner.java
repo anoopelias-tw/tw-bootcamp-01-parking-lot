@@ -1,22 +1,8 @@
 package parkinglot;
 
-public class Owner {
-    private boolean isParkingFull;
-    private boolean isParkingAvailable;
+public interface Owner {
 
-    public void notifyParkingFull() {
-        isParkingFull = true;
-    }
+    public void notifyParkingFull();
 
-    public void notifyParkingAvailable() {
-        isParkingAvailable = true;
-    }
-
-    public boolean isParkingFull() {
-        return isParkingFull;
-    }
-
-    public boolean isParkingAvailable() {
-        return isParkingAvailable;
-    }
+    public void notifyParkingAvailable();
 }
