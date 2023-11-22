@@ -77,11 +77,14 @@ public class ParkingLotTest {
     @Test
     void ownerShouldBeNotifiedWhenParkingLotIsAvailableAfterFull() throws ParkingFullException, VehicleAlreadyParkedException {
         ParkingLot parkingLot = new ParkingLot(2, owner);
-        Vehicle vehicle = new Vehicle();
-        parkingLot.park(new Vehicle());
-        parkingLot.park(vehicle);
+        Vehicle vehicleOne = new Vehicle();
+        Vehicle vehicleTwo = new Vehicle();
+        parkingLot.park(vehicleOne);
+        parkingLot.park(vehicleTwo);
 
-        parkingLot.unpark(vehicle);
+        parkingLot.unpark(vehicleOne);
+        verify(owner, times(1)).notifyParkingAvailable();
+        parkingLot.unpark(vehicleTwo);
         verify(owner, times(1)).notifyParkingAvailable();
     }
 }
