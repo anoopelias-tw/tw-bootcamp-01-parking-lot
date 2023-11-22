@@ -1,15 +1,19 @@
 package parkinglot;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ParkingLot {
-    private int noOfCars;
+    private Set<Vehicle> cars;
     private int capacity;
     public ParkingLot(int capacity) {
         this.capacity = capacity;
-        noOfCars = 0;
+        cars = new HashSet<>();
     }
 
-    public void park(Vehicle vehicle) throws ParkingFullException {
-        if (noOfCars == capacity) throw new ParkingFullException();
-        noOfCars++;
+    public void park(Vehicle vehicle) throws ParkingFullException, VehicleAlreadyParkedException {
+        if (cars.contains(vehicle)) throw new VehicleAlreadyParkedException();
+        if (cars.size() == capacity) throw new ParkingFullException();
+        cars.add(vehicle);
     }
 }
