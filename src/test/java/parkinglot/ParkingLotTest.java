@@ -27,4 +27,15 @@ public class ParkingLotTest {
         parkingLot.park(vehicle);
         assertThrows(VehicleAlreadyParkedException.class, () -> parkingLot.park(vehicle));
     }
+
+    @Test
+    void shouldUnparkTheCar() throws ParkingFullException, VehicleAlreadyParkedException {
+        ParkingLot parkingLot = new ParkingLot(2);
+        Vehicle vehicle = new Vehicle();
+        parkingLot.park(vehicle);
+        parkingLot.unpark(vehicle);
+        parkingLot.park(vehicle);
+        parkingLot.park(new Vehicle());
+    }
+
 }

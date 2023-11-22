@@ -16,4 +16,8 @@ public class ParkingLot {
         if (cars.size() == capacity) throw new ParkingFullException();
         cars.add(vehicle);
     }
+
+    public void unpark(Vehicle vehicle) {
+        cars.remove(vehicle);
+    }
 }
