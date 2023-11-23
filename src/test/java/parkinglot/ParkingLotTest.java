@@ -19,7 +19,7 @@ public class ParkingLotTest {
 
     @Test
     public void parkAVehicle() throws ParkingFullException, VehicleAlreadyParkedException {
-        ParkingLot parkingLot = new ParkingLot(0, owner);
+        ParkingLot parkingLot = new ParkingLot(1, owner);
         Vehicle vehicle = new Vehicle();
         parkingLot.park(vehicle);
     }
