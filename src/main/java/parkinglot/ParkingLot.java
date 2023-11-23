@@ -6,13 +6,13 @@ import java.util.Set;
 public class ParkingLot {
     private Set<Vehicle> cars;
 
-    private Owner owner;
+    private ParkingLotObserver observer;
 
     private int capacity;
-    public ParkingLot(int capacity, Owner owner) {
+    public ParkingLot(int capacity, ParkingLotObserver observer) {
         this.capacity = capacity;
         cars = new HashSet<>();
-        this.owner = owner;
+        this.observer = observer;
     }
 
     public void park(Vehicle vehicle) throws ParkingFullException, VehicleAlreadyParkedException {
@@ -20,11 +20,11 @@ public class ParkingLot {
         if (cars.size() == capacity) throw new ParkingFullException();
         cars.add(vehicle);
 
-        if (cars.size() == capacity) owner.notifyParkingFull();
+        if (cars.size() == capacity) observer.notifyParkingFull();
     }
 
     public void unpark(Vehicle vehicle) {
-        if (cars.size() == capacity) owner.notifyParkingAvailable();
+        if (cars.size() == capacity) observer.notifyParkingAvailable();
         cars.remove(vehicle);
     }
 

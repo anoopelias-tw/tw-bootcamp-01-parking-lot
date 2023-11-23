@@ -10,11 +10,11 @@ import static org.mockito.Mockito.times;
 
 public class ParkingLotTest {
 
-    private Owner owner;
+    private ParkingLotObserver owner;
 
     @BeforeEach
     void setUp() {
-        owner = mock(Owner.class);
+        owner = mock(ParkingLotObserver.class);
     }
 
     @Test
